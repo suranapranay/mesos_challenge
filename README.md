@@ -4,6 +4,7 @@ Mesosphere challenge
 
 
 
+
 After some thinking I realized that it is not possible to get the best scheduler, however we can get a good enough scheduling which is better than FCFS as asked int the question.
 The inuition is to pick the longest task and schedule it as early as possible, on a machine which is the minimum viable machine (resource-wise) for this task.
 
@@ -17,3 +18,8 @@ Instructions:
 To run: cmake . && make all && ./mesos_exec
 
 Currently the values are not configurable, but mesos_exec.cpp in src/prog/ has the code to add more tasks.
+
+
+Known Issue : Currently I am using a Set<> to do the sorting over jobs, however, this is causing collision and eliminating some jobs.
+
+Fix : To fix this, I need to have a multi-value set or a set of Vectors. I ran out of time to fix this, but it is not very hard to fix.
