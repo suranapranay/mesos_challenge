@@ -47,12 +47,14 @@ std::vector<Job::Ptr> Scheduler::scheduleJobs(const std::vector<Job::Ptr>& jobs)
 			std::cout << "new currentTime : " << currentTime << std::endl;
 			std::cout << "currently running job count:" << outJobQueue.size() << std::endl;
       while (!outJobQueue.empty() && currentTime == outJobQueue.top().second->completionTime_) {
-				std::cout << "here " << std::endl;
 
 				schedule.push_back(outJobQueue.top().second);
 				std::cout << "Job removed from machine ID:" << outJobQueue.top().first << std::endl;;
 				for (auto machine: resources_) {
-				    if(machine->id_ == outJobQueue.top().first) machine->used_ -= outJobQueue.top().second->resourceReq_;	
+					if(machine->id_ == outJobQueue.top().first) {
+						machine->used_ -= outJobQueue.top().second->resourceReq_;	
+						std::cout << "machine with ID" <<  machine->id_ << " was restored:" << outJobQueue.top().second->resourceReq_ << " nodes." << std::endl;
+					}
 				}
 				outJobQueue.pop();
 			}
