@@ -12,7 +12,7 @@ void Scheduler::addResource(int id, int capacity) {
 
 std::vector<Job::Ptr> Scheduler::scheduleJobs(const std::vector<Job::Ptr>& jobs) {
   std::vector<Job::Ptr> schedule;
-  auto cmp = [] (const Job::Ptr a, const Job::Ptr b) { return a->duration_ > b->duration_;};
+  auto cmp = [] (const Job::Ptr a, const Job::Ptr b) {if (a->duration_ == b->duration_) return a->id_ > b->id_;  return a->duration_ > b->duration_;};
   std::set<Job::Ptr, decltype(cmp)> priorityJobSet(cmp);
   auto outJobComp = [] (std::pair<int, Job::Ptr> a, const std::pair<int, Job::Ptr> b) {return a.second->completionTime_ > b.second->completionTime_ ;};
   std::priority_queue<std::pair<int, Job::Ptr>, std::vector<std::pair<int, Job::Ptr> >, decltype(outJobComp)> outJobQueue(outJobComp); 
@@ -77,7 +77,7 @@ std::vector<Job::Ptr> Scheduler::scheduleJobs(const std::vector<Job::Ptr>& jobs)
 		}
 
 		if (outJobQueue.empty() && !scheduledAtLeastOne) {
-			std::cout << "All jobs cannot be scheduled" << std::endl; 
+			std::cerr<< "All jobs cannot be scheduled" << std::endl; 
 			break;
 		}
   }

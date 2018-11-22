@@ -11,7 +11,8 @@ public:
   std::function<bool(const Resource::Ptr, const Resource::Ptr)> lambda_;
 	std::set<Resource::Ptr, decltype(lambda_)> resources_;
   Scheduler() {
-    lambda_ = [] (const Resource::Ptr a, const Resource::Ptr b) { return (a->capacity_ - a->used_) < (b->capacity_ - b->used_); };
+    lambda_ = [] (const Resource::Ptr a, const Resource::Ptr b) { if (a->capacity_ - a->used_ == b->capacity_ - b->used_) return a->id_ > b->id_;
+										 return (a->capacity_ - a->used_) < (b->capacity_ - b->used_); }; //removing collisions by matching ID.
 		resources_ = std::set<Resource::Ptr, decltype(lambda_)> (lambda_); 
 	}
   void addResource(Resource::Ptr r);
