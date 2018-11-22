@@ -76,8 +76,10 @@ std::vector<Job::Ptr> Scheduler::scheduleJobs(const std::vector<Job::Ptr>& jobs)
 			}
 		}
 
-		if (outJobQueue.empty() && !scheduledAtLeastOne) {
-			std::cerr<< "All jobs cannot be scheduled" << std::endl; 
+		if (outJobQueue.empty() && !scheduledAtLeastOne && !priorityJobSet.empty()) {
+			std::cerr<< "All JOBS CANNOT BE SCHEDULED" << std::endl; 
+			std::cout << "remaining jobs" << std::endl;
+			std::cout << priorityJobSet.size() << std::endl;
 			break;
 		}
   }
