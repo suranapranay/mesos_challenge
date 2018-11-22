@@ -8,6 +8,6 @@ After some thinking I realized that it is not possible to get the best scheduler
 The inuition is to pick the longest task and schedule it as early as possible, on a machine which is the minimum viable machine (resource-wise) for this task.
 
 
-Thus I visualized a Dijkstra's-like algorithm, where we keep picking the longest task and move onwards.
+Thus I visualized a Dijkstra's-like algorithm, where we keep picking the longest task and move onwards, if the longest task cannot be currently scheduled, we schedule the next longest task and so on.
 
 Each time a task is done, the resources are moved back to the machine of origin.
