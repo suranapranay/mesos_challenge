@@ -10,7 +10,8 @@ include_directories(include)
 
 
 add_library(mesos
-						src/lib/mesos.cpp)
+						src/lib/mesos.cpp
+						src/lib/scheduler.cpp)
 add_executable(mesos_exec src/prog/mesos_exec.cpp)
 
 target_link_libraries(mesos_exec mesos)
