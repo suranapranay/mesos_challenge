@@ -20,6 +20,6 @@ To run: cmake . && make all && ./mesos_exec
 Currently the values are not configurable, but mesos_exec.cpp in src/prog/ has the code to add more tasks.
 
 
-Known Issue : Currently I am using a Set<> to do the sorting over jobs, however, this is causing collision and eliminating some jobs.
+Known Issue (Edit : fixed). I fixed an issue with set uniquness of my machines and jobs using the comparisions between id_ for their objects. I did not think of this happening on time and was fixed rougly 25 minutes after the submission time.
 
-Fix : To fix this, I need to have a multi-value set or a set of Vectors. I ran out of time to fix this, but it is not very hard to fix.
+
