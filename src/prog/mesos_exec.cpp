@@ -6,8 +6,10 @@ int main () {
 	//demo()
 
 	// Consider a schedule with 2 Machines, (1, 5) and (2, 5);
-	// consider 3 Jobs, (5, 3), (8,3), (100, 2)  where 5, 8, 3 are the DURATIONS, and 3, 3, 2 are the resource requirements.
-	// With FCFS
+	// consider 3 Jobs, (5, 3), (8,3), (100, 2)  where 5, 8, 100 are the DURATIONS, and 3, 3, 2 are the resource requirements.
+	// With FCFS, Jobs with duration 5 and 8 will be scheduled first and Job with duration 100 will start at T = 5 (after job with duration 5 is completed).
+	// However, prioritizing Machines with highest duration makes more sense as we can parallelize more.
+  // Thus our scheduler picks Duration 100 job, and then both Job 5 and 8 run in parallel. Thus taking a total time of 100.
   Scheduler f;
   f.addResource(1, 5);
   f.addResource(2, 5);
