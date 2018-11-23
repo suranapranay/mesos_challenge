@@ -67,6 +67,8 @@ std::vector<Job::Ptr> Scheduler::scheduleJobs(const std::vector<Job::Ptr>& jobs)
 					scheduledAtLeastOne = true;
 					resources_.erase(resource); //unlink from the set
 					resource->used_ += inJob->resourceReq_; //update the working capacity.
+					// now used
+					std::cout << "resource now used on machine ID:used" << resource->id_ << " " << resource->used_ << std::endl;
           resources_.insert(resource); //re-insert.
   				inJob->completionTime_ = inJob->duration_ + currentTime; //update the completion time.
  					outJobQueue.emplace(resource->id_, inJob); //push the job inside the simulator queue.
@@ -78,8 +80,7 @@ std::vector<Job::Ptr> Scheduler::scheduleJobs(const std::vector<Job::Ptr>& jobs)
 
 		if (outJobQueue.empty() && !scheduledAtLeastOne && !priorityJobSet.empty()) {
 			std::cerr<< "All JOBS CANNOT BE SCHEDULED" << std::endl; 
-			std::cout << "remaining jobs" << std::endl;
-			std::cout << priorityJobSet.size() << std::endl;
+			std::cout << "remaining jobs:" << priorityJobSet.size() << std::endl;
 			break;
 		}
   }

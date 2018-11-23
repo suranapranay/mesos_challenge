@@ -4,6 +4,9 @@
 
 static void printJobs(std::vector<Job::Ptr>& jobs) {
 	for (auto x : jobs) std::cout << "ID:" << x->id_ << " " << "Duration" << x->duration_ << "resource:" << x->resourceReq_ << "Completion time:" << x->completionTime_ << std::endl;
+
+	std::cout << std::endl;
+	std::cout << std::endl;
 }
 
 int main () {
@@ -55,6 +58,18 @@ int main () {
 	linearScheduledJobs.push_back(Job::create(1, 1, 6));
 	auto linearSchedule = Test3.scheduleJobs(linearScheduledJobs);
   printJobs(linearSchedule);
+	//Test4 One big machine // expect all tests to run
+	std::cout << "Test#4 One big Test" << std::endl;
+	Test4.addResource(1, 15550);
+	std::vector<Job::Ptr> oneBigMachine;
+	oneBigMachine.push_back(Job::create(1, 50, 1));	
+	oneBigMachine.push_back(Job::create(1, 100, 2));	
+	oneBigMachine.push_back(Job::create(1, 200, 3));	
+	oneBigMachine.push_back(Job::create(1, 300, 4));	
+	oneBigMachine.push_back(Job::create(1, 400, 5));	
+	oneBigMachine.push_back(Job::create(1, 500, 6));	
+	auto bigSchedule = Test4.scheduleJobs(oneBigMachine);
+  printJobs(bigSchedule);
   return 0;
 }
 
