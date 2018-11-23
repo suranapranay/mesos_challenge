@@ -22,4 +22,6 @@ Currently the values are not configurable, but mesos_exec.cpp in src/prog/ has t
 
 Known Issue (Edit : fixed). I fixed an issue with set uniquness of my machines and jobs using the comparisions between id_ for their objects. I did not think of this happening on time and was fixed rougly 25 minutes after the submission time.
 
+Added more testcases after the time was up. The last test case was added roughly 40 minutes after deadline.
 
+Added Minor logging and indents. 
