@@ -25,3 +25,10 @@ Known Issue (Edit : fixed). I fixed an issue with set uniquness of my machines a
 Added more testcases after the time was up. The last test case was added roughly 40 minutes after deadline.
 
 Added Minor logging and indents. 
+
+Note: Ideally I would make the tests cases with Google Test library, however I was running out of time. 
+The algorithm demonstrates the requirement of the questions, and this piece of code will provide some rough idea.
+
+Things not done : More testcases. 
+                  Breaking the Scheduling algorithm into two or three smaller functions.
+                  Some refractoring of the scheduling algorithm in terms of readeability of variable names.
