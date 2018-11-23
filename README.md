@@ -27,8 +27,14 @@ Added more testcases after the time was up. The last test case was added roughly
 Added Minor logging and indents. 
 
 Note: Ideally I would make the tests cases with Google Test library, however I was running out of time. 
-The algorithm demonstrates the requirement of the questions, and this piece of code will provide some rough idea.
+The algorithm demonstrates the requirement of the questions, and this piece of code will provide some rough idea about my code in general.
+
+Assumption Made: One of the questions condition was to "as resources become available", I interpret it as resource used and released, and factored it in the algorithm. I was not sure if it means that new capacity can be allocated, and I have not done that. However, it is not difficult to do so as it just means finding the ID and increasing the capacity of the machine.
+
+Things Done: Algorithm demo-ed. A critical bug was fixed past deadline.
 
 Things not done : More testcases. 
                   Breaking the Scheduling algorithm into two or three smaller functions.
-                  Some refractoring of the scheduling algorithm in terms of readeability of variable names.
+                  Some refractoring of the scheduling algorithm in terms of readeability of variable names
+
+
